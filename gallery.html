@@ -252,6 +252,7 @@ footer.site a:hover{color:var(--red)}
 
 /* Gallery */
 .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;align-items:start}
+#gallery.compact .gallery-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
 .g-item{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--radius);overflow:hidden}
 .g-item a{display:block}
 .g-item img{display:block;width:100%;height:auto}
@@ -288,7 +289,7 @@ footer.site a:hover{color:var(--red)}
 
 <main id="top">
   <!-- GALLERY -->
-  <section class="block" id="gallery" style="padding-top:34px">
+  <section class="block compact" id="gallery" style="padding-top:34px">
     <div class="wrap">
       <p><a href="index.html" style="font-weight:700">← Back to home</a></p>
       <div class="sec-head"><h2>Gallery</h2><span class="count">Photos from BAAM events</span></div>
@@ -473,6 +474,9 @@ footer.site a:hover{color:var(--red)}
   var buttons = document.querySelectorAll('.filters button');
   function apply(filter){
     buttons.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-filter')===filter ? 'true':'false'); });
+    /* All-events view uses smaller thumbnails so more fit; a single
+       event uses the larger grid. */
+    document.getElementById('gallery').classList.toggle('compact', filter==='all');
     document.querySelectorAll('.gallery-event').forEach(function(sec){
       var show = filter==='all' || sec.getAttribute('data-event')===filter;
       sec.classList.toggle('hidden-card', !show);
