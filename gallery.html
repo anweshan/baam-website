@@ -517,10 +517,9 @@ footer.site a:hover{color:var(--red)}
 
 </main>
 <script>(function(){
-  /* All-events view shows small thumbnails, so it fits more per page;
-     a single event shows large thumbnails, so it keeps 4 per page. */
+  /* 12 photos per page in every view — All events and single-event alike. */
   function pageSize(){
-    return document.getElementById('gallery').classList.contains('compact') ? 12 : 4;
+    return 12;
   }
   /* Items matching the section's active band filter ('all' = every photo).
      Sections without a band filter (Halloweeb, Tokyo Arcade) have no
